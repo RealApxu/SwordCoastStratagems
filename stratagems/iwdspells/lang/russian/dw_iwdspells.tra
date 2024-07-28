@@ -115,7 +115,7 @@
 @216="11-й уровень: может исполнять «Боевую песнь Ситта»;"
 
 @220="не исполняет песни, доступные обычному барду;"
-@221="нет\.?" // must match the string used in kit descriptions to indicate that there are no disadvantages; see, e.g., Jester
+@221="нет" // must match the string used in kit descriptions to indicate that there are no disadvantages; see, e.g., Jester
 @222="Недостатки:" // must match appropriate string from kit descriptions
 @223="Эта способность замещает обычную песнь барда." // must exactly match string from description of spcl920.spl
 // 224 and 225 can also be used to remove text from the description of the Enhanced Bard Song (spcl920) if non_English installs need it
