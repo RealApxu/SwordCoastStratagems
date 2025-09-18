@@ -265,7 +265,7 @@ BEGIN
 		CDRDGAXE=>AX1H01
 		CDRDXVRT=>SW1H07
 		CDRDCBLT=>XBOW04
-		CDRDSBOW=>SW1H04
+		CDRDSBOW=>BOW05
 		CDRDCB5=>BOW03
 		CDRDCS1=>SW1H04
 		RNDTRE58=>ULBOW4A
@@ -317,7 +317,7 @@ BEGIN
 			OUTER_SPRINT damagetype unknown
 			OUTER_SET type=1
 		END
-		cdrdgnl // random half ogre - various swords
+		cdrdhogr// random half ogre - various swords
 		cdrdyuan // random yuan-ti - mix of slashing weapons
 		cdrd1hms // random slashing
 		cdrdhobm // hobgoblins
@@ -363,6 +363,11 @@ BEGIN
           BUT_ONLY
          END ELSE BEGIN
              LAF warning STR_VAR arguments= ~Tried to identify nonexistent weapon %weaponfile%.itm~ END
+			OUTER_SET twohanded=0
+			OUTER_SET proftype=990
+			OUTER_SET enchantment=0
+			OUTER_SPRINT damagetype unknown
+			OUTER_SET type=1
          END
          END
        END
@@ -488,8 +493,9 @@ BEGIN
 		END
 	END
 	READ_SHORT (2*2+item_slot_off) shield_slot
-	PATCH_IF VARIABLE_IS_SET $itm_arr("%shield_slot") BEGIN
-		itm_off=$itm_arr("%slot_num%")
+	PATCH_IF VARIABLE_IS_SET $itm_arr("%shield_slot%") BEGIN
+		PATCH_PRINT "has offhand"
+		itm_off=$itm_arr("%shield_slot%")
 		READ_ASCII itm_off weaponfile
 		LPF identify_weapon STR_VAR weaponfile RET type proftype ench_here=enchantment damagetype_here=damagetype END
 		PATCH_IF type=0 BEGIN

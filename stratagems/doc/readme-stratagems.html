@@ -32,7 +32,7 @@
 <div class="section"> 
   <p><strong><a href="http://www.gibberlings3.net/">A Gibberlings Three Mod</a><br />  </strong>
 Author: </strong><a href="http://www.gibberlings3.net/forums/index.php?showuser=1067">DavidW</a></p>
-  <p><strong>Version 35.18</strong><br />
+  <p><strong>Version 35.21</strong><br />
     <strong> Languages:</strong> English, French, German, Italian, Polish, Russian, Spanish, and Traditional Chinese.<br />
     <strong>Platforms: </strong>Windows, Linux (Enhanced Edition only), Mac OS X (Enhanced Edition only)</p>
   <p>Sword Coast Stratagems (<acronym title="Sword Coast Stratagems">SCS
@@ -1488,7 +1488,7 @@ In addition, on non-EE installs all the difficulties for the individual componen
 <p>The file "stratagems.ini", found in the stratagems directory, allows fine-tuning of install options not available via the main installer. To do this, just edit the file in Notepad or another text editor. Each line consists of a configuration option, then '=', then a number (or in one case a string). The only thing you should edit is the number (or string).</p>
 <p>The current player-usable options are listed below, by section. (Don't change anything not listed; these are work-in-progress and/or part of the testing framework.) I list the default value in parentheses after the setting.</p>
 <strong>Spell system changes</strong>
-<p>These variables all control the individual changes to the spell system (see documentation <a href=#spelltweaks>here</a>). Setting each to 1 disables the respective change.</p>
+<p>These variables all control the individual changes to the spell system (see documentation <a href=#spelltweaks>here</a>). Setting each to 0 disables the respective change.</p>
 <strong>Nerfed items</strong>
 <p>These variables control the individual item tweaks in the 'Move or modify some overpowered items' component (see full details <a href=#add>here</a>). Setting each to 1 disables the respective change.</p>
 <strong>Component tweaks</strong>
@@ -3604,6 +3604,55 @@ href="http://iesdp.gibberlings3.net/">Infinity Engine Structure Description Proj
 					<li>Other misc SFO fixes and tweaks prior to documentation release.</li>
 					<li>Readme history section now lists components in chronological order, not reverse chronological order.</li>
 				</ul>
+				</li>
+				<li>Version 35.19 (23rd August 2024)
+					<ul>
+					<li>Systematic rebuild of the help-group system in IWDEE, hopefully damping down some of the dogpiling in areas like Kresselack's Tomb.</li>
+					<li>Armor spell is now correctly cast during prebuffing.</li>
+					<li>Invisibility scrolls are now correctly used by stealthing mage/thieves.</li>
+					<li>Removed redundant (and possibly compatibility-breaking) code to let priests summon elemental princes if ToF HLA system is installed.</li>
+					<li>Fixed a bug in the compatibility code between Improved General AI and IWDification's item randomizer (plus SCS should fail a bit more gracefully if it can't identify a weapon).</li>
+					<li>The 'dispel at level' version of the nerf-inquisitor-dispel component was erroneously installing as if it was 'dispel at 1.5x level'.</li>
+					<li>The nerf-inquisitor-dispel component now matches the level cap (level 40) on the dispel that is used by the unnerfed version (previously, the 1.5xlevel version was capped at level 30 and the 1xlevel was capped at level 20, introducing an unintentionally strong nerf in the late game.)</li>
+					<li>The Tale of Curran Strongheart now correctly blocks mummy fear.</li>
+					<li>The 'use IWD Chromatic Orb' spell tweak no longer brings over Icewind Dale opposition schools (and so can now be scribed by conjurers).</li>
+					<li>Fixed a couple of glitches with enemy druid shapeshifting.</li>
+					<li>A handful of EE items no longer have doubled-up 'usable by' blocks.</li>
+					</ul>
+				</li>
+				<li>Version 35.20 (8th September 2024)
+					<ul>
+					<li>Updated Chinese translation.</li>
+					<li>Fixed some issues with NPC auto-levelling that arose when games were saved and loaded.</li>
+					<li>Seven Eyes spell now works correctly.</li>
+					<li>"NPC Customization and Management" was failing to fully remove dual class flags from dual-class characters, leading to awkward consequences if they multiclassed.</li>
+					<li>Interjections in Watcher's Keep are no longer messed up by the 'go to Watcher's Keep early' component.</li>
+					<li>'Thieves gain skill points in multiples of 5' is no longer offered for install if you already have its functionality via Talents of Faerun.</li>
+					</ul>
+				</li>
+				<li>Version 35.21 (21st November 2024)
+					<ul>
+					<li>Fixed some issues with NPC auto-levelling that arose when games were saved and loaded.</li>
+					<li>Fixed a (SFO1e) library bug that was interfering with the detection of shields and offhand weapons.</li>
+					<li>Corrected several oBG2 installation issues that had crept in since 35.0 was released.</li>
+					<li>Tanar'ri spies had inserted a bug that made all Baatezu Chaotic Evil. Fixing this hopefully ends the Great Baatezu Civil War.</li>
+					<li>The cosmetic effects of the Balor vorpal sword now grant a saving throw (to match the saving throw SCS already gives against the main vorpal effect).</li>
+					<li>The Gith captain (along with other high level paladins/blackguards) waits till he can see enemies before summoning an ally.</li>
+					<li>Enemy mages have read the readme and no longer use Death Spell on creatures it doesn't affect.</li>
+					<li>Carsa, while still traumatized by her ordeal with Kahrk, doesn't endlessly relive it in Gullykin by constantly respawning.</li>
+					<li>Fixed some awkward interactions between shapeshift tokens and mods that alter the proficiency system.</li>
+					<li>Fixed a library glitch that was causing compatibility issues between IWDification random items and SCS (it was replacing some shortbows with swords).</li>
+					<li>'Increased Spellhold cost' now updates journal entries.</li>
+					<li>Nishruu have been slightly lowered in level so that Death Spell still affects them.</li>
+					<li>The Ascension version of the innate Cure Light Wounds bhaalspawn ability is now affected by the Enhance Cure/Cause spell tweak.</li>
+					<li>The Larloch's Minor Drain tweak no longer does an extra 4 hp of damage.</li>
+					<li>Stonefist now grants the listed +2 bonus to AC.</li>
+					<li>The IWD-style color spray component now installs properly.</li>
+					<li>Slight tweak to the SFO library to handle possible (unconfirmed) compatibility errors on level-zero creatures.</li>
+					<li>The IWD spells now overwrite previous versions of the spells installed by other mods (except Spell Revisions) - not doing so was leading to subsequent install failures when the other-mod version of an IWD spell was configured differently from our version.</li>
+					<li>Removed some (harmless) WARNINGs if you install the IWD spells and the spell tweaks on oBG2.</li>
+					
+					</ul>
 				</li>
 			</ul>
 </div>

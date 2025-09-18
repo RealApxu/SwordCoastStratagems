@@ -1,17 +1,33 @@
+INCLUDE ~%MOD_FOLDER%/lib/ai_wrap.tph~
 
 DEFINE_ACTION_FUNCTION test BEGIN
 
-/*
-	COPY "spin890.spl" override
-	OUTER_SPRINT component_loc initial
-	LAF include STR_VAR file=initial.tpa END
-	LAF detectable_items END
-*/
-
-	OUTER_SPRINT component_loc initial
-	LAF include STR_VAR file=mirror_image_aoe.tph END
-	LAF mirror_image_AoE END
-
+	
+	COPY_EXISTING "drasus.cre" override
+		LPF identify_weapon_preferences STR_VAR filename="%SOURCE_RES%" RET onhandprof
+            offhandprof
+            rangedprof
+            style
+            skip_me
+            has_ranged
+            damagetype
+            enchantment
+            no_weapon
+		END
+		PATCH_FOR_EACH var IN
+			onhandprof
+            offhandprof
+            rangedprof
+            style
+            skip_me
+            has_ranged
+            damagetype
+            enchantment
+            no_weapon
+		BEGIN
+			SPRINT val EVAL "%%var%%"
+			PATCH_PRINT "%var%=%val%"
+		END
 	
 END
 
